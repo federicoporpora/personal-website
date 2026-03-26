@@ -1,0 +1,16 @@
+# Infrastructure & Node
+node_modules/
+.npm/
+.nvm/
+.vscode/
+
+# Private/Sensitive Data
+private/
+*.tex
+GEMINI.md
+.gemini/
+brain/
+
+# OS specific files
+.DS_Store
+thumbs.db

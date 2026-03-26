@@ -3,27 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Federico Porpora | Personal Website</title>
+    <title>Federico Porpora | Computer Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Ciao! I'm Federico</h1>
-        <p>Welcome to my personal website. Enter your name below for a quick greeting!</p>
-        
-        <div class="form-group">
-            <input type="text" id="nameInput" placeholder="Your name..." autocomplete="off">
-            <button id="greetButton">Greet Me</button>
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="hobbies.html">Extracurriculars</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">◐</button>
+    </nav>
+    <main>
+        <div class="hero-wrapper">
+            <div class="hero-gradient"></div>
+            <section class="hero container hero-content">
+                <div class="star">✦</div>
+                <div class="star">✧</div>
+                <div class="star">✦</div>
+                <div class="star">✧</div>
+                <div class="star">✦</div>
+                
+                <div class="avatar-container reveal">
+                    <img src="assets/profile.jpg" alt="Federico Porpora" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                </div>
+                <h1 class="hero-title reveal" style="transition-delay: 0.1s;">Federico Porpora</h1>
+                <p class="lead-text reveal" style="transition-delay: 0.2s;">Computer Engineering Student at the University of Bologna with a strong focus on software development, networked systems, and robust architecture.</p>
+                <div class="hero-btns reveal" style="transition-delay: 0.3s;">
+                    <a href="projects.html" class="btn btn-primary">
+                        View Projects
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                    <a href="about.html" class="btn btn-outline">About Me</a>
+                </div>
+            </section>
         </div>
-        
-        <div id="greetingMessage" class="message-area"></div>
-        
-        <div class="footer">
-            <p>3rd Year Computer Engineering @ UNIBO</p>
+
+        <section class="section-pad container reveal" style="margin-bottom: 2rem;">
+            <div class="grid-2 align-center">
+                <!-- Highlighted GPX Merger -->
+                <div class="bento-card card-purple text-center" style="padding: 4rem 2rem;">
+                    <div class="card-icon" style="margin: 0 auto 1.5rem;">🤖</div>
+                    <h3 class="card-title">GPX HR Merger & Bot</h3>
+                    <p class="card-desc">Python utility and Telegram bot designed to merge heart rate data into GPS tracks for Strava integration.</p>
+                    <a href="https://github.com/federicoporpora/gpx-telegram-bot" target="_blank" class="project-link" style="font-size: 0.9rem;">View on GitHub &rarr;</a>
+                </div>
+                <div>
+                    <h2 class="section-title">Software Engineering</h2>
+                    <p class="lead-text" style="margin-bottom: 2rem;">My technical expertise spans from lower-level programming in C and Java to applying network protocols and managing databases. I am driven by the process of automating complex workflows into elegant solutions.</p>
+                    <a href="projects.html" class="btn btn-primary">All Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-pad container bg-alt reveal" style="padding: 4rem 5%; border-radius: var(--border-radius-lg); margin-bottom: 2rem;">
+            <div class="text-center mb-4">
+                <h2 class="section-title">Professional Methodology</h2>
+                <p class="lead-text" style="margin: 0 auto;">Core principles that guide my academic and developmental work.</p>
+            </div>
+            <div class="grid-3">
+                <div class="bento-card card-blue">
+                    <div class="card-icon">🔍</div>
+                    <h3 class="card-title" style="font-size: 1.5rem;">Data-Driven Analysis</h3>
+                    <p class="card-desc">Prioritizing a comprehensive understanding of system requirements and architectural constraints before writing code.</p>
+                </div>
+                <div class="bento-card card-coral">
+                    <div class="card-icon">🤝</div>
+                    <h3 class="card-title" style="font-size: 1.5rem;">Project Organization</h3>
+                    <p class="card-desc">Leveraging soft skills refined through years of scouting leadership to manage timelines, logistics, and team dynamics securely.</p>
+                </div>
+                <div class="bento-card card-mint">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title" style="font-size: 1.5rem;">Iterative Execution</h3>
+                    <p class="card-desc">Embracing continuous improvement, rapid prototyping, and optimizing codebase efficiency to meet technical objectives.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-pad container reveal" style="margin-bottom: 4rem;">
+            <div class="grid-2 align-center">
+                <div>
+                    <h2 class="section-title">Beyond the Terminal</h2>
+                    <p class="lead-text" style="margin-bottom: 2rem;">Maintaining peak performance requires discipline offline. I balance my academic rigor with endurance sports, volunteer work, and community leadership.</p>
+                    <a href="hobbies.html" class="btn btn-outline">Extracurriculars</a>
+                </div>
+                <div class="bento-card card-mint text-center" style="padding: 4rem 2rem;">
+                    <div class="card-icon" style="margin: 0 auto 1.5rem;">🏕️</div>
+                    <h3 class="card-title">Active Leadership</h3>
+                    <p class="card-desc">Scout Leader & Endurance Athlete (Arezzo & Bologna).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <h4 class="footer-title">Federico Porpora</h4>
+                <p style="color: var(--text-muted); max-width: 300px;">B.Sc. Computer Engineering candidate combining technical rigor with disciplined execution.</p>
+            </div>
+            <div>
+                <h4 class="footer-title" style="font-size: 1.5rem;">Menu</h4>
+                <ul class="footer-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="hobbies.html">Extracurriculars</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title" style="font-size: 1.5rem;">Contact</h4>
+                <ul class="footer-list">
+                    <li><a href="https://github.com/federicoporpora" target="_blank">GitHub</a></li>
+                    <li><a href="https://linkedin.com/in/federicoporpora" target="_blank">LinkedIn</a></li>
+                    <li><a href="mailto:porporafederico@gmail.com">Email</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+        <div class="footer-bottom">
+            &copy; <span id="current-year">2026</span> Federico Porpora. All rights reserved.
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
-
- 

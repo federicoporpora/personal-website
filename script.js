@@ -1,26 +1,49 @@
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
-    const nameInput = document.getElementById('nameInput');
-    const greetButton = document.getElementById('greetButton');
-    const messageArea = document.getElementById('greetingMessage');
+    // Current year in footer
+    const yearEl = document.getElementById('current-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
 
-    const handleGreeting = () => {
-        const name = nameInput.value.trim();
-        
-        if (name === '') {
-            messageArea.textContent = 'Please enter your name!';
-            messageArea.style.color = '#e74c3c'; // Error color
-        } else {
-            messageArea.textContent = `Hello, ${name}! Welcome to my site.`;
-            messageArea.style.color = '#3498db'; // Primary color
-        }
+    // Reveal elements on scroll
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
     };
 
-    greetButton.addEventListener('click', handleGreeting);
+    const revealOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
 
-    // Support for 'Enter' key
-    nameInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            handleGreeting();
+    revealElements.forEach(el => revealOnScroll.observe(el));
+
+    // Dark Mode Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggleBtn.textContent = '☀';
         }
-    });
+
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.textContent = '◐';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.textContent = '☀';
+            }
+        });
+    }
 });
