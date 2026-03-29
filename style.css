@@ -1,27 +1,27 @@
 /* style.css */
 :root {
-    --bg: #fdfcfb;
-    --bg-alt: #f4f3f6;
-    --text-main: #1d1d1f;
-    --text-muted: #6e6e73;
+    --bg: #e8e8ed; /* Even darker off-white background for extreme contrast */
+    --text-main: #000000; /* Pure black text */
+    --text-muted: #444444; /* Darker muted text */
     
-    --accent-purple: #cbb4f6;
-    --accent-purple-dark: #8c52ff;
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.18); /* Much sharper borders */
     
-    --accent-mint: #b0eed4;
-    --accent-mint-dark: #00b67a;
+    /* Highly saturated and dense pastel colors */
+    --accent-purple: rgba(138, 90, 224, 0.35);
+    --accent-mint: rgba(30, 200, 120, 0.4);
+    --accent-coral: rgba(255, 80, 60, 0.35);
+    --accent-blue: rgba(40, 160, 255, 0.4);
     
-    --accent-coral: #ffc4ba;
-    --accent-coral-dark: #ff6b57;
-    
-    --accent-blue: #bde0fe;
-    --accent-blue-dark: #2196f3;
-
-    --btn-bg: #1d1d1f;
+    --btn-bg: #000000;
     --btn-text: #ffffff;
     
-    --nav-bg: rgba(255, 255, 255, 0.25);
-    --nav-border: rgba(255, 255, 255, 0.4);
+    --nav-bg: rgba(255, 255, 255, 0.5);
+    --nav-border: rgba(0, 0, 0, 0.15); /* Sharper glass border */
+
+    --footer-bg: #ffffff;
+    --footer-text: #555555;
+    --footer-title: #000000;
 
     --border-radius-lg: 32px;
     --border-radius-md: 20px;
@@ -30,7 +30,7 @@
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     
     --card-bg: #ffffff;
-    --card-border: rgba(0,0,0,0.04);
+    --card-border: rgba(0, 0, 0, 0.12);
     
     --icon-bg: #ffffff;
     --icon-color: #1d1d1f;
@@ -39,15 +39,12 @@
     --card-mint-bg: #ebfcf5;
     --card-coral-bg: #fff0ed;
     --card-blue-bg: #eef7ff;
-    
-    --footer-bg: #111111;
-    --footer-text: #ffffff;
 }
 
 [data-theme="dark"] {
     --bg: #111111;
     --bg-alt: #161618;
-    --text-main: #f5f5f7;
+    --text-main: #ffffff;
     --text-muted: #a1a1a6;
     
     --accent-purple: #5e3a96;
@@ -62,14 +59,14 @@
     --accent-blue: #2a6496;
     --accent-blue-dark: #4299e1;
 
-    --btn-bg: #f5f5f7;
-    --btn-text: #111111;
+    --btn-bg: #ffffff;
+    --btn-text: #000000;
     
-    --nav-bg: rgba(20, 20, 20, 0.25);
-    --nav-border: rgba(255, 255, 255, 0.1);
+    --nav-bg: rgba(20, 20, 20, 0.4);
+    --nav-border: rgba(255, 255, 255, 0.15);
     
     --card-bg: #1c1c1e;
-    --card-border: rgba(255,255,255,0.05);
+    --card-border: rgba(255,255,255,0.08);
     
     --icon-bg: #333333;
     --icon-color: #ffffff;
@@ -80,6 +77,8 @@
     --card-blue-bg: #1f2a3d;
     
     --footer-bg: #000000;
+    --footer-text: #a1a1a6;
+    --footer-title: #ffffff;
 }
 /* Base */
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -136,6 +135,11 @@ nav {
     border: 1px solid var(--nav-border);
     align-items: center;
 }
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
 nav a {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
@@ -170,14 +174,15 @@ nav a.active {
     nav a { padding: 0.6rem 0.8rem; font-size: 0.9rem; white-space: nowrap; }
     nav { 
         top: 1rem; width: 95%; 
-        justify-content: flex-start;
+        justify-content: space-between;
+    }
+    .nav-links {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        border-radius: 100px;
     }
-    nav::-webkit-scrollbar { display: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
     .bento-card { padding: 1.5rem; }
     .card-title { font-size: 1.5rem; }
     .section-pad { padding-top: 4rem; padding-bottom: 4rem; }
@@ -331,19 +336,20 @@ nav a.active {
 /* Cards */
 .bento-card {
     background: var(--card-bg);
-    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius-md);
     padding: 2.5rem;
-    transition: var(--transition);
     position: relative;
     overflow: hidden;
-    border: 1px solid var(--card-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 .bento-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
 }
 .card-icon {
     width: 60px;
@@ -387,14 +393,14 @@ nav a.active {
 footer {
     background: var(--footer-bg); color: var(--footer-text);
     padding: 6rem 0 3rem; margin-top: 6rem;
-    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    border-top: 1px solid var(--card-border);
 }
 .footer-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
 @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
-.footer-title { font-size: 2rem; margin-bottom: 1rem; color: var(--footer-text);}
-footer a { color: #aaa; transition: var(--transition); }
-footer a:hover { color: var(--footer-text); }
-.footer-bottom { border-top: 1px solid #333; margin-top: 4rem; padding-top: 2rem; color: #777; font-size: 0.9rem; text-align: center; }
+.footer-title { font-size: 2rem; margin-bottom: 1rem; color: var(--footer-title);}
+footer a { color: var(--footer-text); transition: var(--transition); }
+footer a:hover { color: var(--text-main); }
+.footer-bottom { border-top: 1px solid var(--card-border); margin-top: 4rem; padding-top: 2rem; color: var(--text-muted); font-size: 0.9rem; text-align: center; }
 .footer-list { list-style: none; }
 .footer-list li { margin-bottom: 0.8rem; }
 
